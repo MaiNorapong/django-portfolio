@@ -1,0 +1,13 @@
+/*@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";*/
+
+.hide:hover .hide-item {
+  visibility: visible;
+}
+
+.hide:focus .hide-item {
+  visibility: visible;
+}
+
+.hide .hide-item {
+  visibility: hidden;
+}

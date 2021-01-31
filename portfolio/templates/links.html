@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+  <title>links</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Links</h1>
+  <ul>
+  {% for page in pages %}
+    <li>
+    <a href={% url page %}>{{ page }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

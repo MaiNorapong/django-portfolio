@@ -1,0 +1,118 @@
+{% extends "base_generic.html" %}
+{% load markdownify %}
+
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+
+{% block content %}
+<section class="hero is-info is-medium">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title" style="font-size: 3rem">
+        Mai Norapong
+      </p>
+      <p class="subtitle" style="font-size: 1.5rem">
+        not a web designer
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container block">
+    <h1 class="title hide">
+      Projects
+      <a class="hide-item" aria-hidden="true" id="projects" href="#projects">¶</a>
+    </h1>
+    <p class="subtitle">
+      some things I did in university
+    </p>
+    <div class="content">
+      {{ projects | markdownify }}
+    </div>
+  </div>
+  <div class="container block">
+    <h1 class="title hide">
+      Hobbies
+      <a class="hide-item" aria-hidden="true" id="hobbies" href="#hobbies">¶</a>
+    </h1>
+    <p class="subtitle">
+      some other things I do
+    </p>
+    <div class="content">
+      {{ hobbies | markdownify }}
+    </div>
+  </div>
+  <div class="container block">
+    <h1 class="title hide">
+      Contact
+      <a class="hide-item" aria-hidden="true" id="contact" href="#contact">¶</a>
+    </h1>
+    <p class="subtitle">
+      obligatory section
+    </p>
+
+    <form action="{% url 'portfolio' %}" method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="field">
+        {{ form.subject.errors }}
+        <label class="label" for="id_subject">Subject</label>
+        <div class="control">
+          <input class="input" id="id_subject" type="text" name="subject" maxlength="100" required placeholder="Enquiry subject">
+        </div>
+      </div>
+
+      <div class="field">
+        {{ form.sender.errors }}
+        <label class="label" for="id_sender">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="email" name="sender" id="id_sender" required placeholder="Your email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        {{ form.message.errors }}
+        <label class="label" for="id_message">Message</label>
+        <div class="control">
+          <textarea class="textarea" name="message" id="id_message" required placeholder="Enquiry message"></textarea>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <input type="submit" class="button is-link">
+        </div>
+        <div class="control">
+          <input type="reset" class="button is-link is-light" value="Cancel">
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+<footer class="footer">
+<div class="content has-text-centered">
+  <div>
+    <strong>My socials</strong>
+  </div>
+  <div style="display: inline-flex">
+    <a class="icon is-large" href="https://github.com/MaiMee1">
+      <i class="fab fa-2x fa-github"></i>
+    </a>
+    <a class="icon is-large" href="https://www.youtube.com/channel/UCIBKlghtyxckxmt7-Ym2cvA">
+      <i class="fab fa-2x fa-youtube"></i>
+    </a>
+    <a class="icon is-large" href="https://www.facebook.com/mai.mee.16">
+      <i class="fab fa-lg fa-facebook-f"></i>
+    </a>
+    <a class="icon is-large" href="https://twitter.com/BentMapleTree">
+      <i class="fab fa-lg fa-twitter"></i>
+    </a>
+  </div>
+</div>
+</footer>
+{% endblock %}

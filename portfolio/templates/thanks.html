@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% load markdownify %}
+
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">
+      Thank you
+    </h1>
+    <p class="subtitle">
+      Enquiry submitted
+    </p>
+    <a href="{% url 'portfolio' %}">
+      Go back
+    </a>
+  </div>
+</section>
+{% endblock %}
